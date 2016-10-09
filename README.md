@@ -5,9 +5,10 @@ To Start this application including this attributes localhost:9092 first new asy
 
 #Command Utils
 
-Start Zookeeper (Remember: Kafka depends the Zookeeper to sync and keep sessions and connections (Producers and Consummers)
-->  ./zookeeper-server-start.sh ../config/zookeeper.properties &
--> Start the First and Second node of Kafka 
+#Start Zookeeper (Remember: Kafka depends the Zookeeper to sync and keep sessions and connections (Producers and Consummers)
+./zookeeper-server-start.sh ../config/zookeeper.properties &
+
+#Start the First and Second node of Kafka 
   ./kafka-server-start.sh ../config/server.properties &
   ./kafka-server-start.sh ../config/server2.properties &
 
