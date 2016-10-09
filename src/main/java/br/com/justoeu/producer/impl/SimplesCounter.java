@@ -2,6 +2,9 @@ package br.com.justoeu.producer.impl;
 
 
 import br.com.justoeu.producer.IProducer;
+import br.com.justoeu.producer.builder.CustomerBuilder;
+import br.com.justoeu.producer.commons.JsonUtils;
+import br.com.justoeu.producer.domain.Customer;
 
 import java.util.concurrent.ExecutionException;
 
@@ -45,9 +48,12 @@ public class SimplesCounter {
         System.out.println("Starting...");
         producer.produce("Starting...");
 
+        CustomerBuilder builder = new CustomerBuilder();
+
         /* produce the numbers */
         for (int i=0; i < count; i++ ) {
-            producer.produce(Integer.toString(i));
+//            producer.produce(Integer.toString(i));
+            producer.produce(JsonUtils.toJson(builder.buildFake()));
             Thread.sleep(delay);
         }
 
