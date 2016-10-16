@@ -31,4 +31,4 @@ To Start this application including this attributes localhost:9092 first new asy
     ./kafka-console-consumer.sh --zookeeper localhost:2181 --topic first --from-beginning
 
 ##Information
-- if you use the Producer setting async mode to send the messagens, the producer can't stop/close until all messagens were send. If this happens, propably the messages could be lost cause the Producer use buffer to send and if it not be complete before the producer is closed, the messages will lost. The other way to avoid this is use sync mode but remember, this normaly is slower than async mode.
+- if you use the Producer setting async mode to send the messagens, the producer can't stop/close until all messagens were send. If this happens, propably the messages could be lost cause the Producer use buffer to send and if it not be complete before the producer is closed, the messages will lost. The other way to avoid this is use sync mode but remember, this normaly is slower than async mode. On the other hand, using the new Producer Kafka (KafkaProducer) is possible to create a callback method to check if the producer success to send message to Kafka Server.
