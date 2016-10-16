@@ -58,12 +58,12 @@ public class ProducerNewJava implements IProducer {
     /* Produce a record and wait for server to reply. Throw an exception if something goes wrong */
     private void produceSync(String value) throws ExecutionException, InterruptedException {
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, value);
-        producer.send(record).get();
+        producer.send(record, new ProducerCallback()).get();
 
     }
 
     /* Produce a record without waiting for server. This includes a callback that will print an error if something goes wrong */
-    private void produceAsync(String value) {
+    private void produceAsync(String value) throws ExecutionException, InterruptedException  {
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, value);
         producer.send(record, new ProducerCallback());
     }
@@ -76,7 +76,7 @@ public class ProducerNewJava implements IProducer {
                 System.out.println("Error producing to topic " + recordMetadata.topic());
                 e.printStackTrace();
             } else{
-                System.out.println("OK - " + recordMetadata.topic());
+                System.out.println("OK - " + recordMetadata.topic() + " - Partition: " + recordMetadata.partition());
             }
         }
     }
