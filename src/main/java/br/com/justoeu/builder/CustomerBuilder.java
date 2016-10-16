@@ -1,6 +1,6 @@
-package br.com.justoeu.producer.builder;
+package br.com.justoeu.builder;
 
-import br.com.justoeu.producer.domain.Customer;
+import br.com.justoeu.domain.Customer;
 
 import java.util.Random;
 

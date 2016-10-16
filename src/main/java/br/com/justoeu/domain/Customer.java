@@ -1,4 +1,4 @@
-package br.com.justoeu.producer.domain;
+package br.com.justoeu.domain;
 
 import lombok.Getter;
 import lombok.Setter;

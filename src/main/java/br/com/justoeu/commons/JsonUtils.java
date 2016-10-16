@@ -1,4 +1,4 @@
-package br.com.justoeu.producer.commons;
+package br.com.justoeu.commons;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

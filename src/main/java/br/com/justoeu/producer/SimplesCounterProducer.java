@@ -1,17 +1,17 @@
-package br.com.justoeu.producer.impl;
+package br.com.justoeu.producer;
 
 
-import br.com.justoeu.producer.IProducer;
-import br.com.justoeu.producer.builder.CustomerBuilder;
-import br.com.justoeu.producer.commons.JsonUtils;
-import br.com.justoeu.producer.domain.Customer;
+import br.com.justoeu.builder.CustomerBuilder;
+import br.com.justoeu.commons.JsonUtils;
+import br.com.justoeu.producer.impl.ProducerNewJava;
+import br.com.justoeu.producer.impl.ProducerOld;
 
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by valmir.justo on 9/12/16.
  */
-public class SimplesCounter {
+public class SimplesCounterProducer {
 
     private static IProducer producer;
 
