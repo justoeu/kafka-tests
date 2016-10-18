@@ -32,3 +32,5 @@ To Start this application including this attributes localhost:9092 first new asy
 
 ##Information
 - if you use the Producer setting async mode to send the messagens, the producer can't stop/close until all messagens were send. If this happens, propably the messages could be lost cause the Producer use buffer to send and if it not be complete before the producer is closed, the messages will lost. The other way to avoid this is use sync mode but remember, this normaly is slower than async mode.
+
+ [![Throughput Graph](https://graphs.waffle.io/justoeu/kafka-tests/throughput.svg)](https://waffle.io/justoeu/kafka-tests/metrics/throughput) 
