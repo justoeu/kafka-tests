@@ -1,7 +1,7 @@
-package br.com.justoeu.producer.impl;
+package br.com.justoeu.kafka.producer.impl;
 
 
-import br.com.justoeu.producer.IProducer;
+import br.com.justoeu.kafka.producer.IProducer;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
@@ -16,12 +16,13 @@ public class ProducerOld implements IProducer {
 
     private String topic;
 
-    public ProducerOld(String topic) {
-        this.topic = topic;
+    @Override
+    public void start() {
+        producer = new Producer<>(config);
     }
 
     @Override
-    public void configure(String brokerList, String sync) {
+    public IProducer configure(String brokerList, String topic, String sync) {
         kafkaProps.put("metadata.broker.list", brokerList);
         kafkaProps.put("serializer.class", "kafka.serializer.StringEncoder");
         kafkaProps.put("request.required.acks", "1");
@@ -30,17 +31,20 @@ public class ProducerOld implements IProducer {
         kafkaProps.put("receive.buffer.bytes","550000");
 
         config = new ProducerConfig(kafkaProps);
-    }
+        this.topic = topic;
 
-    @Override
-    public void start() {
-        producer = new Producer<String, String>(config);
+        return this;
     }
 
     @Override
     public void produce(String s) {
         KeyedMessage<String, String> message = new KeyedMessage<String, String>(topic, null, s);
         producer.send(message);
+    }
+
+    @Override
+    public String getProducerMode() {
+        return "";
     }
 
     @Override

@@ -1,0 +1,60 @@
+<configuration scan="true">
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>FINE</level>
+        </filter>
+        <file>/tmp/log/kafka.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/tmp/log/kafka-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>localhost</syslogHost>
+        <facility>LOCAL6</facility>
+        <suffixPattern>[%thread] %logger %msg</suffixPattern>
+    </appender>
+
+    <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender"
+              queueSize="10000" discardingThreshold="10">
+        <appender-ref ref="FILE" />
+    </appender>
+
+    <logger name="org.apache.commons" additivity="false">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="org.apache.kafka" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="br.com.justoeu" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+    <root level="DEBUG">
+        <appender-ref ref="ASYNC-FILE" />
+        <appender-ref ref="SYSLOG" />
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

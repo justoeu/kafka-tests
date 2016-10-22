@@ -1,4 +1,4 @@
-package br.com.justoeu.producer.domain;
+package br.com.justoeu.kafka.domain;
 
 import lombok.Getter;
 import lombok.Setter;

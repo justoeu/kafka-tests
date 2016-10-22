@@ -1,4 +1,4 @@
-package br.com.justoeu.producer;
+package br.com.justoeu.kafka.producer;
 
 import java.util.concurrent.ExecutionException;
 
@@ -6,12 +6,8 @@ public interface IProducer {
 
     /**
      * create configuration for the producer
-     * consult Kafka documentation for exact meaning of each configuration parameter
      */
-    void configure(String brokerList, String sync);
-
-    /* start the producer */
-    void start();
+    IProducer configure(String brokerList, String topic, String sync);
 
     /**
      * create record and send to Kafka
@@ -20,5 +16,12 @@ public interface IProducer {
      */
     void produce(String s) throws ExecutionException, InterruptedException;
 
+    /**
+     * return what produce Mode was set
+     * @return
+     */
+    String getProducerMode();
+
+    void start();
     void close();
 }
