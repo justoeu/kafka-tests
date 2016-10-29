@@ -5,6 +5,8 @@ import br.com.justoeu.kafka.producer.IProducer;
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.Callback;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.Properties;
 
