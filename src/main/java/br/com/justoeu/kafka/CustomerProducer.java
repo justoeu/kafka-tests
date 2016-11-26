@@ -1,7 +1,7 @@
 package br.com.justoeu.kafka;
 
 
-import br.com.justoeu.kafka.constants.KafkaContants;
+import br.com.justoeu.kafka.constants.KafkaConstants;
 import br.com.justoeu.kafka.producer.IProducer;
 import br.com.justoeu.kafka.builder.CustomerBuilder;
 import br.com.justoeu.kafka.commons.JsonUtils;
@@ -31,7 +31,7 @@ public class CustomerProducer {
 
         int count = Integer.parseInt(args[0]);
 
-        IProducer producer = new ProducerImpl().configure(BROKER_LIST, TOPIC_NAME, KafkaContants.KAFKA_PRODUCE_ASYNC_MODE);
+        IProducer producer = new ProducerImpl().configure(BROKER_LIST, TOPIC_NAME, KafkaConstants.KAFKA_PRODUCE_ASYNC_MODE);
         producer.start();
 
         long startTime = System.currentTimeMillis();

@@ -1,6 +1,6 @@
 package br.com.justoeu.kafka.producer.impl;
 
-import br.com.justoeu.kafka.constants.KafkaContants;
+import br.com.justoeu.kafka.constants.KafkaConstants;
 import br.com.justoeu.kafka.producer.IProducer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -17,13 +17,13 @@ public class ProducerImpl implements IProducer {
 
     @Override
     public ProducerImpl configure(String brokerList, String topic, String sync) {
-        kafkaProps.put(KafkaContants.KAFKA_KEY_BOOTSTRAP_SERVER, brokerList);
-        kafkaProps.put(KafkaContants.KAFKA_KEY_SERIALIZER_CLASS, KafkaContants.KAFKA_SERIALIZER_CLASS);
-        kafkaProps.put(KafkaContants.KAFKA_VALUE_SERIALIZER_CLASS, KafkaContants.KAFKA_SERIALIZER_CLASS);
-        kafkaProps.put(KafkaContants.KAFKA_KEY_ACKS, KafkaContants.KAFKA_WITH_LOG_LOCAL_ACK);
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_BOOTSTRAP_SERVER, brokerList);
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_SERIALIZER_CLASS, KafkaConstants.KAFKA_SERIALIZER_CLASS);
+        kafkaProps.put(KafkaConstants.KAFKA_VALUE_SERIALIZER_CLASS, KafkaConstants.KAFKA_SERIALIZER_CLASS);
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_ACKS, KafkaConstants.KAFKA_WITH_LOG_LOCAL_ACK);
 
-        kafkaProps.put(KafkaContants.KAFKA_KEY_MANY_RETRIES, "3");
-        kafkaProps.put(KafkaContants.KAFKA_KEY_TIME_LATENCY_TO_SEND, 5);
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_MANY_RETRIES, "3");
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_TIME_LATENCY_TO_SEND, 5);
 
         this.sync = sync;
         this.topic = topic;
@@ -46,7 +46,7 @@ public class ProducerImpl implements IProducer {
 
         ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, value);
 
-        if (sync.equals(KafkaContants.KAFKA_PRODUCE_SYNC_MODE)) {
+        if (sync.equals(KafkaConstants.KAFKA_PRODUCE_SYNC_MODE)) {
             producer.send(record).get();
         } else {
             producer.send(record, new ProducerCallback());

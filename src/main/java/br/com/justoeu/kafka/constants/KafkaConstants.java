@@ -5,7 +5,7 @@ package br.com.justoeu.kafka.constants;
  *
  * for others configuration http://kafka.apache.org/documentation.html
  */
-public class KafkaContants {
+public class KafkaConstants {
 
     public static final String KAFKA_KEY_GROUP_ID = "group.id";
     public static final String KAFKA_KEY_BOOTSTRAP_SERVER = "bootstrap.servers";
@@ -17,8 +17,16 @@ public class KafkaContants {
     public static final String KAFKA_KEY_ACKS = "acks";
     public static final String KAFKA_KEY_MANY_RETRIES = "retries";
     public static final String KAFKA_KEY_TIME_LATENCY_TO_SEND = "linger.ms";
+    public static final String KAFKA_KEY_AUTO_COMMIT_INTERNAL_MS = "auto.commit.interval.ms";
+    public static final String KAFKA_KEY_CONSUMER_TIMEOUT_MS = "consumer.timeout.ms";
+
+    public static final String KAFKA_KEY_AUTO_COMMIT_ENABLE = "auto.commit.enable";
+
+    public static final String KAFKA_ZOOKEEPER_CONNECT = "zookeeper.connect";
 
     public static final String KAFKA_EARLIEST_OFFSET_REST = "earliest";
+    public static final String KAFKA_LARGEST_OFFSET_REST = "largest";
+
     public static final String KAFKA_SERIALIZER_CLASS = "org.apache.kafka.common.serialization.StringSerializer";
     public static final String KAFKA_DESERIALIZER_CLASS = "org.apache.kafka.common.serialization.StringDeserializer";
 
