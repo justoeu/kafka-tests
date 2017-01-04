@@ -12,7 +12,7 @@ import java.util.Collections;
 @Slf4j
 public class CustomerConsumer {
 
-    public static final String BROKER_LIST = "localhost:9092";
+    public static final String BROKER_LIST = "localhost:9091,localhost:9092";
     public static final String GROUP_ID = "kafkaClient";
     public static final long TIMEOUT = 100;
 

@@ -17,6 +17,7 @@ public class ProducerImpl implements IProducer {
 
     @Override
     public ProducerImpl configure(String brokerList, String topic, String sync) {
+        kafkaProps.put(KafkaConstants.KAFKA_KEY_GROUP_ID, "kafkaClient");
         kafkaProps.put(KafkaConstants.KAFKA_KEY_BOOTSTRAP_SERVER, brokerList);
         kafkaProps.put(KafkaConstants.KAFKA_KEY_SERIALIZER_CLASS, KafkaConstants.KAFKA_SERIALIZER_CLASS);
         kafkaProps.put(KafkaConstants.KAFKA_VALUE_SERIALIZER_CLASS, KafkaConstants.KAFKA_SERIALIZER_CLASS);

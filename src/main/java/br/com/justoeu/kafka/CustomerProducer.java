@@ -16,8 +16,8 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 public class CustomerProducer {
 
-    public static final String BROKER_LIST = "localhost:9092";
-    public static final String TOPIC_NAME = "first";
+    public static final String BROKER_LIST = "localhost:9091,localhost:9092";
+    public static final String TOPIC_NAME = "second";
     public static final int DELAY = 5;
     public static final String FINISH_MSG = "... finish. Time Total: ";
     public static final String STARTING_MSG = "Starting Producer using ";
